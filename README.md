@@ -48,7 +48,7 @@ index-servers =
     pypitest
 
 [pypi]
-repository: https://upload.pypi.org/legacy/
+#repository: https://upload.pypi.org/legacy/ これはいらないのかな。
 username: hoge
 password: fuga
 
@@ -124,6 +124,12 @@ setup(
 アップロードさせる
 ```
 python setup.py sdist upload -r pypitest
+
 や
-python setup.py sdist upload -r pypiを実行する
+
+python setup.py sdist upload -r pypi これだめかな。
+
+twine upload dist/*
+
+を実行する
 ```
