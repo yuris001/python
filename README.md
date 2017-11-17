@@ -70,6 +70,16 @@ root/
 
 　└ setup.py
 ```
+hello.py の中身
+```
+def hello():
+    print("Hello, world!")
+
+if __name__ == '__main__':
+    hello()
+```
+
+
 setup.py の中身
 ```
 from setuptools import setup
