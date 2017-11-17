@@ -35,3 +35,85 @@ $ pyenv virtualenv 3.5.1 projectA
 $ pyenv virtualenv 3.5.1 projectB
 このコマンドを実行すると ~/.pyenv/versions/projectA, ~/.pyenv/versions/projectB というディレクトリが作成され、pyenv の環境として指定できるようになります。
 ```
+
+---
+
+### PyPi への登録
+
+.pypircの作成
+```
+[distutils]
+index-servers =
+    pypi
+    pypitest
+
+[pypi]
+repository: https://upload.pypi.org/legacy/
+username: hoge
+password: fuga
+
+[pypitest]
+repository: https://test.pypi.org/legacy/
+username: hoge
+password: fuga
+```
+
+ディレクトリ構成
+```
+root/
+
+　├ hello/
+
+　│　├ __init__.py
+
+　│　└ hello.py
+
+　└ setup.py
+```
+setup.py の中身
+```
+from setuptools import setup
+
+#setup(
+#    name='hello',
+#    version='0.0.1',
+#    packages=['hello'],
+#    entry_points={
+#        'console_scripts': [
+#            'hello=hello.hello:hello',
+#        ],
+#    },
+#)
+
+setup(
+    name='orenohello',
+    version='0.2.0',
+    description='A sample Python project',
+    long_description='This is a sample to say Hello!',
+    url='https://github.com/yuris001/orenohello',
+    author='ore',
+    author_email='hoge.fuga@test.test',
+    license='MIT',
+    classifiers=[
+    'Development Status :: 3 - Alpha',
+    'Intended Audience :: Education',
+    'Topic :: Education',
+    'License :: OSI Approved :: MIT License',
+    'Programming Language :: Python :: 3.5',
+    ],
+    keywords='sample setuptools development',
+    packages=['hello'],
+    entry_points={
+        'console_scripts': [
+            'hello=hello.hello:hello',
+        ],
+    },
+)
+```
+
+アップロードさせる
+```
+python setup.py sdist upload -r pypitest
+や
+python setup.py sdist upload -r pypiを実行する
+```
