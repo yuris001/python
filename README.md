@@ -129,7 +129,9 @@ python setup.py sdist upload -r pypitest
 
 python setup.py sdist upload -r pypi これだめかな。
 
-twine upload dist/*
+これでいけた。↓
+python setup.py sdist でビルドして
+twine upload dist/*　でアップロード
 
 を実行する
 ```
